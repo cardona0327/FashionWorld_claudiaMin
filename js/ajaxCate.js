@@ -1,0 +1,1 @@
+function eliminarCate(){var e=document.getElementById("id_categoria").value;param={idCateEliminar:e},$.ajax({data:param,url:"ctroAdmi.php",dataType:"html",method:"get",success:function(e){0===e?Swal.fire({icon:"error",title:"error",text:"no se encontró"}):document.getElementById("categorias").innerHTML=e},error:function(e,t,a){console.log(a)}})}

@@ -1,0 +1,1 @@
+function visibilidadcontraseñaE(){const e=document.getElementById("input-old-password");document.getElementById("showPasswordE").checked?e.type="text":e.type="password"}function visibilidadcontraseñaN(){const e=document.getElementById("input-new-password");document.getElementById("showPasswordN").checked?e.type="text":e.type="password"}

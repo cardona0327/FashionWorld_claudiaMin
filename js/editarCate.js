@@ -1,0 +1,1 @@
+function editar(){document.getElementById.edit.innerHTML}

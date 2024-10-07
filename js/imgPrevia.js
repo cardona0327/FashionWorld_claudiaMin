@@ -1,0 +1,1 @@
+function previewImage(){var e=document.getElementById("preview"),n=document.getElementById("imagen").files[0],t=new FileReader;n?(t.onloadend=function(){e.src=t.result},t.readAsDataURL(n)):e.src="../img/hellokitty.gif"}

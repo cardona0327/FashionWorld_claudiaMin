@@ -1,0 +1,1 @@
+function enviarComentario(){var e=document.getElementById("mensaje").value;""!==e.trim()?$.ajax({url:"ctroUser.php",method:"POST",data:{accion:"agregarComentario",mensaje:e},success:function(e){$("#foro-container").html(e),document.getElementById("mensaje").value=""}}):alert("Por favor escribe un comentario antes de enviar.")}

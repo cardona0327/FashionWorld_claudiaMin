@@ -1,0 +1,1 @@
+function mostrarCarrito(){$.ajax({url:"ctroUser.php",data:{accion:"mostrarCarrito"},method:"GET",success:function(r){$("#contenedor-carrito").html(r)},error:function(r,o,t){console.log("Error al mostrar el carrito: "+t)}})}

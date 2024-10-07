@@ -1,0 +1,1 @@
+function cambiarFoto(){var o=document.getElementById("inputFoto").files[0];if(o){var t=new FormData;t.append("foto",o),$.ajax({data:t,url:"../usuarios/ctroUser.php?cambioFoto=true",type:"POST",processData:!1,contentType:!1,success:function(o){document.getElementById("perfilFoto").src=o},error:function(o,t,e){console.log("Error: "+e)}})}}

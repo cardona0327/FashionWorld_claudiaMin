@@ -1,0 +1,1 @@
+function buscador(){var e={idBuscador:document.getElementById("nombrePro").value};$.ajax({data:e,url:"ctroUser.php",datatype:"texto",method:"get",success:function(e){document.getElementById("mostrarPro").innerHTML=e},error:function(e,o,r){console.log("Error en AJAX: "+r)}})}

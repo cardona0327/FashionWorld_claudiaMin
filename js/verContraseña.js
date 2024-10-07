@@ -1,0 +1,1 @@
+function visibilidadcontraseña(){const e=document.getElementById("password");document.getElementById("showPassword").checked?e.type="text":e.type="password"}
