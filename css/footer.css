@@ -1,0 +1,23 @@
+/* Estilos generales para el footer */
+#footer {
+    background-color: #343a40; /* Color de fondo */
+    color: white; /* Color del texto */
+    text-align: center; /* Centramos el texto */
+}
+
+/* Estilos para las columnas del footer */
+#footer-brand, #footer-contact, #footer-social {
+    margin-bottom: 20px; /* Espacio inferior para cada columna */
+}
+
+/* Color del texto para enlaces y otros elementos */
+#footer a {
+    color: #ffc107; /* Color amarillo para enlaces */
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    #footer {
+        text-align: center; /* Centrar texto en pantallas pequeñas */
+    }
+}
