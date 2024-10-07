@@ -1,0 +1,97 @@
+//Disparadores ----------------------------------------------------------------------------------------------------
+DELIMITER //
+create trigger contando_user_eli
+after delete on
+tb_usuarios
+for each row begin 
+insert into tb_conteo_user_eli()
+values(null,concat('El ususario: ', old.nombre,' con el ID: ',old.documento,' ha eliminado su cuenta.'),1, now() );
+end;
+//
+
+DELIMITER //
+create trigger contando_user_reg
+after insert on
+tb_usuarios
+for each row begin 
+insert into tb_conteo_user_reg()
+values(null,concat('Se ha registrado el usuario: ', new.nombre,' con el ID: ',new.documento),1, now() );
+end;
+//
+DELIMITER //
+create trigger contando_user_actu
+after update on
+tb_usuarios
+for each row begin 
+insert into tb_conteo_user_actu()
+values(null,concat('Se ha actualizado el usuario: ', new.nombre,' con el ID: ',new.documento),1, now() );
+end;
+//
+DELIMITER //
+create trigger contando_pro_eli
+after delete on
+tb_productos
+for each row begin 
+insert into tb_conteo_pro_eli()
+values(null,concat('Se ha eliminado el producto: ', old.nombre_producto,' con el ID: ',old.id_producto),1, now() );
+end;
+//
+DELIMITER //
+create trigger contando_pro_reg
+after insert on
+tb_productos
+for each row begin 
+insert into tb_conteo_pro_reg()
+values(null,concat('Se ha creado el producto: ', new.nombre_producto,' con el ID: ',new.id_producto),1, now() );
+end;
+//
+DELIMITER //
+create trigger contando_pro_actu
+after update on
+tb_productos
+for each row begin 
+insert into tb_conteo_pro_actu()
+values(null,concat('Se ha actualizado el producto: ', new.nombre_producto,' con el ID: ',new.id_producto),1, now() );
+end;
+//
+
+
+DELIMITER //
+
+CREATE FUNCTION contar_usuarios()
+RETURNS INT
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE total_usuarios INT;
+
+    SELECT COUNT(*) INTO total_usuarios FROM tb_usuarios;
+
+    RETURN total_usuarios;
+END //
+
+DELIMITER ;
+
+
+SELECT contar_usuarios() AS total_registrados;
+
+DELIMITER //
+
+CREATE PROCEDURE contar_productos()
+BEGIN
+    DECLARE total_productos INT;
+
+    SELECT COUNT(*) INTO total_productos FROM tb_productos;
+
+    SELECT total_productos AS total_registrados;
+END //
+
+DELIMITER ;
+
+CALL contar_productos();
+
+
+
+show triggers;
+show function status where Db = 'fw';
+show procedure status where Db = 'fw';
