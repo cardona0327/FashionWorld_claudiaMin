@@ -440,25 +440,24 @@ UNLOCK TABLES;
 -- Table structure for table `tb_productos`
 --
 
-DROP TABLE IF EXISTS `tb_productos`;
+DROP TABLE IF EXISTS tb_productos;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tb_productos` (
-  `id_producto` int(11) NOT NULL,
-  `nombre_producto` varchar(150) NOT NULL,
-  `precio` float NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `detalles` varchar(150) NOT NULL,
-  `color` varchar(50) DEFAULT NULL,
-  `tallas` varchar(50) DEFAULT NULL,
-  `ruta_img` varchar(250) DEFAULT NULL,
-  `id_categoria` int(11) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`id_producto`),
-  KEY `fk_categoria` (`id_categoria`),
-  CONSTRAINT `fk_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `tb_categoria` (`id_categoria`)
+CREATE TABLE tb_productos (
+  id_producto int(11) NOT NULL AUTO_INCREMENT,
+  nombre_producto varchar(150) NOT NULL,
+  precio float NOT NULL,
+  cantidad int(11) NOT NULL,
+  detalles varchar(150) NOT NULL,
+  color varchar(50) DEFAULT NULL,
+  tallas varchar(50) DEFAULT NULL,
+  ruta_img varchar(250) DEFAULT NULL,
+  id_categoria int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (id_producto),
+  KEY fk_categoria (id_categoria),
+  CONSTRAINT fk_categoria FOREIGN KEY (id_categoria) REFERENCES tb_categoria (id_categoria)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 --
 -- Dumping data for table `tb_productos`
 --

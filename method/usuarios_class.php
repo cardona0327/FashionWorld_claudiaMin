@@ -93,33 +93,37 @@ public static function verificaCon($contraseñaN, $doc) {
 public static function perfilUsuario($id) {
     include_once("modelo.php");  // Incluir el archivo del modelo con las consultas SQL
     include_once("login_class.php");  // Incluir la clase de login para verificar el rol del usuario
-    
+    $salida = "";
     // Realizamos la consulta para obtener la información del perfil del usuario
     $consulta = Modelo::sqlPerfil($id);
-    
+
+    $rol = Loguin::verRol($id); 
+    if ($rol == 0) {
+        $salida .= "<h1><center>Perfil de Super Administrador</center></h1>";
+    }
+    elseif($rol == 1) {
+        $salida .= "<h1><center>Perfil de Administrador</center></h1>";
+    }
     // Iniciamos la cadena de salida con el contenedor del perfil
-    $salida = "<div class='perfil-container'>";
-    
+    $salida .= "<div class='perfil-container'>";
     // Iteramos sobre los resultados de la consulta
     while ($fila = $consulta->fetch_assoc()) {
         // Definir la ruta de la foto de perfil o usar una predeterminada si no hay foto
         $foto = !empty($fila['foto']) ? '../img/' . $fila['foto'] : '../img/perfil.jpg';
         
         // Verificamos el rol del usuario usando el método verRol()
-        $rol = Loguin::verRol($id); 
+        
         
         // Añadimos el contenedor de la foto de perfil
         $salida .= "<div class='perfil-foto-container'>";
-
+        
         if ($rol == 0) {
-            echo "<h1><center>Perfil de Super Administrador</center></h1>";
             // Añadimos la foto de perfil con un input oculto para cambiar la foto
             $salida .= "<img id='perfilFoto' src='" . $foto . "' alt='Foto de perfil' class='perfil-foto' onclick='document.getElementById(\"inputFoto\").click();'>";
             $salida .= "<input type='file' id='inputFoto' style='display: none;' onchange='cambiarFotoAdmi()'>";
         }
         // Si el usuario es administrador, mostramos el título "Perfil de Administrador"
         else if ($rol == 1) {
-            echo "<h1><center>Perfil de Administrador</center></h1>";
             // Añadimos la foto de perfil con un input oculto para cambiar la foto
             $salida .= "<img id='perfilFoto' src='" . $foto . "' alt='Foto de perfil' class='perfil-foto' onclick='document.getElementById(\"inputFoto\").click();'>";
             $salida .= "<input type='file' id='inputFoto' style='display: none;' onchange='cambiarFotoAdmi()'>";
