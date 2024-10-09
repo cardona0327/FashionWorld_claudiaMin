@@ -144,7 +144,7 @@ public static function perfilUsuario($id) {
         // Si el usuario tiene un rol de administrador (0) o usuario (1), mostramos opciones para editar o eliminar la cuenta
         if (Loguin::verRol($id) == 0 or Loguin::verRol($id) == 1) {
             $salida .= "<a class='btn btn-success' href='../admi/ctroBar.php?seccion=actuUser' role='button'><i class='fa fa-pencil-alt'></i> Editar</a><br>";
-            $salida .= "<a class='btn btn-danger' href='../usuarios/ctroBar.php?seccion=ctroAdmi&eliCuenta=true'><i class='fas fa-trash-alt'></i> Eliminar cuenta</a>";
+            $salida .= "<a class='btn btn-danger' href='../admi/ctroBar.php?seccion=ctroAdmi&eliCuenta=true'><i class='fas fa-trash-alt'></i> Eliminar cuenta</a>";
         } else {
             // Si no es administrador, muestra las opciones de usuario regular
             $salida .= "<a class='btn btn-success' href='../usuarios/conBaBus.php?seccion=actuUser' role='button'><i class='fa fa-pencil-alt'></i> Editar</a><br>";
