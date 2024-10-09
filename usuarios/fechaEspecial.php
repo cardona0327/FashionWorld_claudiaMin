@@ -5,7 +5,7 @@ require_once '../method/modeloFechaEspe.php'; // Asegúrate de que la ruta sea c
 $host = 'localhost';
 $user = 'root';
 $password = '';
-$database = 'hola';
+$database = 'fw';
 
 $conn = new mysqli($host, $user, $password, $database);
 

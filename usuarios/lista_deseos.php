@@ -19,5 +19,5 @@
 <!-- Mostrar los deseos del usuario -->
 <?php 
 include_once("../method/usuarios_class.php");
-Usuarios::mostrarDeseosConEliminar($_SESSION['id']); 
+echo Usuarios::mostrarDeseosConEliminar($_SESSION['id']); 
 ?>

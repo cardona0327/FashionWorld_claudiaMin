@@ -52,10 +52,10 @@ if (isset($_GET['idBuscador'])) {
 
 if (isset($_GET['recuperar'])) {
     if (isset($_POST['correo'])) {
-        if (Usuarios::buscarId($_POST['correo']) == 0) {
+        if(Usuarios::buscarId($_POST['correo']) == 0) {
             echo "Error: escribiste mal la contraseña o no apareces en el sistema";
         } else {
-            $correo =  FuncionPro::vacunaXxs($_POST['correo']);
+            $correo = FuncionPro::vacunaXxs($_POST['correo']);
             $dato = token::creartoken(10);
             echo Correo::enviarCorreo($correo, $dato);
         }
@@ -79,6 +79,8 @@ if(isset($_GET['cambioCo'])){
         $contraseñaN =  FuncionPro::vacunaXxs($_POST['nuevaClave']);
         $contraseñaUser = FuncionPro::vacunaXxs($_POST['newPassword']);
         $doc = EncriptarURl::desencriptar($_GET['codigo']);
+        echo $doc;
+    
         
         if(Usuarios::verificaCon($contraseñaN,$doc)==0){
             echo "la contraseña no coincide";
