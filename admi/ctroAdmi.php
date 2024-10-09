@@ -143,9 +143,33 @@ if(isset($_GET['IDbuscar'])){
     
 }
 
-if(isset($_GET['eliCuenta'])){
-    if(Usuarios::eliminarCuentaUser($_SESSION['id'])){
-        header("location:../index.php");
+
+if (isset($_GET['eliCuenta'])) {
+    if (Usuarios::eliminarCuentaUser($_SESSION['id']) == 1) {
+        echo "
+        <html>
+        <head>
+            <script type='text/javascript'>
+                setTimeout(function() {
+                    window.location.href = '../index.php';
+                }, 3000);
+            </script>
+        </head>
+        <body>
+            <h2>Cuenta eliminada con éxito.</h2>
+            <p>Serás redirigido al inicio en 3 segundos. Si no ocurre, haz clic <a href='../index.php'>aquí</a>.</p>
+        </body>
+        </html>";
+        exit();
+    } else {
+        echo "
+        <html>
+        <body>
+            <h2>Ocurrió un error al eliminar la cuenta.</h2>
+            <p>Por favor, intenta de nuevo o contacta al soporte.</p>
+            <a href='perfil.php'>Volver al perfil</a>
+        </body>
+        </html>";
     }
 }
 
