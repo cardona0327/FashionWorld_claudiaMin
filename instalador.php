@@ -10,7 +10,7 @@ if($conexion -> connect_error){
     echo "error en la conexion";
 }
 
-$base = "hola";
+$base = "fw";
 $sql_create_bd = "CREATE DATABASE IF NOT EXISTS $base";
 
 
