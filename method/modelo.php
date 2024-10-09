@@ -199,14 +199,23 @@ public static function sqlEliminarPro($id) {
 public static function sqlEliminarCate($id) {
     include("db_fashion/cb.php"); // Conexión a la base de datos
     
-    // Eliminar los productos asociados a la categoría
+    // Primero elimina las referencias en la tabla tb_detalle_factura
+    $sqlDetalle = "DELETE FROM tb_detalle_factura WHERE id_producto IN 
+                   (SELECT id_producto FROM tb_productos WHERE id_categoria = '$id')";
+    $conexion->query($sqlDetalle); // Elimina los detalles relacionados con productos de esa categoría
+    
+    // Luego, elimina los productos asociados a la categoría
     $sqlPro = "DELETE FROM tb_productos WHERE id_categoria = '$id'";
     $conexion->query($sqlPro); // Ejecuta la consulta para eliminar los productos
     
-    // Eliminar la categoría de la tabla tb_categoria
-    $sql = "DELETE FROM tb_categoria WHERE id_categoria = '$id'";
-    return $resultado = $conexion->query($sql); // Retorna el resultado de la eliminación de la categoría
+    // Finalmente, elimina la categoría de la tabla tb_categoria
+    $sqlCate = "DELETE FROM tb_categoria WHERE id_categoria = '$id'";
+    $resultado = $conexion->query($sqlCate); // Ejecuta la consulta para eliminar la categoría
+    
+    // Cierra la conexión
     $conexion->close();
+    
+    return $resultado; // Retorna el resultado de la eliminación de la categoría
 }
     /**
  * Método para obtener una categoría específica de la base de datos.

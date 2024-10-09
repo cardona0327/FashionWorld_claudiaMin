@@ -32,7 +32,7 @@ public static function createEmailHtml($name, $message, $dato, $id) {
                 </div>
                 <div class='code'>
                     <p>Ingresa esta nueva contraseña: $dato</p>
-                    <a href='localhost/PROYECTO-CLAUDIA/cambioClave.php?codigo=".$id."'>dale click</a>
+                    <a href='localhost/FashionWorld_claudiaMin-main/cambioClave.php?codigo=".$id."'>dale click</a>
                 </div>
             </div>
         </body>

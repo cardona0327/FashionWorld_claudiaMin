@@ -1126,7 +1126,7 @@ public static function mostrarTodosDeseosBonito() {
                 $salida .= '<img src="../img/' . htmlspecialchars($deseo['foto']) . '" alt="Foto de perfil" class="imagen-perfil">';
             } else {
                 // Imagen por defecto si no hay foto
-                $salida .= '<img src="../img/Anotación 2024-09-05 134018.png" alt="Foto de perfil" class="imagen-perfil">';
+                $salida .= '<img src="../img/perfil.jpg" alt="Foto de perfil" class="imagen-perfil">';
             }
             $salida .= '</div>';
             

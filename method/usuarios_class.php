@@ -63,11 +63,11 @@ public static function buscarId($email) {
  * @param int $doc El documento de identidad del usuario.
  * @return string Retorna el valor asociado (por ejemplo, un ID o un indicador de verificación) si la contraseña es válida, o una cadena vacía si no coincide.
  */
-public static function verificaCon($contraseñaN, $doc) {
+public static function verificaCon($contraseñaN,$doc) {
     include_once("modelo.php");  // Incluir el archivo del modelo que contiene las consultas SQL
     
     // Realizamos la consulta para verificar si la contraseña coincide con el documento del usuario
-    $consulta = Modelo::verficaClave($contraseñaN, $doc);
+    $consulta = Modelo::verficaClave($contraseñaN,$doc);
     
     // Iteramos sobre los resultados de la consulta
     while ($fila = $consulta->fetch_array()) {
@@ -78,10 +78,6 @@ public static function verificaCon($contraseñaN, $doc) {
     return $salida;
     $conexion->close();
 }
-
-    
-    
-
     /**
  * Método para generar el perfil de un usuario, mostrando sus datos y foto de perfil.
  *
